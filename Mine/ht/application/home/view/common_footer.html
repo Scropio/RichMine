@@ -1,0 +1,100 @@
+
+  </style>
+    <footer class="footer">
+        <div class="footerWrap">
+
+            <!-- flink -->
+            <section class="flinks-box">
+                <div class="container w-1200 p-n">
+                    <div class="list-group-text flinks wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.1s">
+                        <span>交换链接请联系QQ：{$sys.qq}</span>
+                        {volist name="linkList" id="vo"}
+                        <a href="{$vo.url}">{$vo.name}</a>
+                        {/volist}
+
+                     </div>
+                </div>
+            </section>
+
+            <section class="footer-topbar p-t-40 p-b-40">
+                <div class="container w-1200 p-n">
+                    <!-- contact -->
+                    <div class="foot-contact col-xs-3 col-md-3 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.0s">
+                        <img src="/static/web/images/foot-contact-icon.png" alt="">
+                        <span>{$sys.tel}</span>
+                    </div>
+                    <!-- foot nav and copyright -->
+                    <div class="col-xs-7 col-md-7">
+                        <!-- foot nav -->
+                        <div class="foot-nav wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.0s">
+                            <ul class="row">
+                                {volist name="category" id="vo"}
+                                {if condition="$vo['child'] eq 1"}
+                               <li><a href="{:url('home/'.$vo['catdir'].'/index',['catId'=>5] )}">{$vo.catname}</a></li>    
+                                {else /}
+                                 <li><a href="{:url('home/'.$vo['catdir'].'/index',['catId'=>$vo['id']] )}">{$vo.catname}</a></li>    
+                                {/if}
+                                {/volist}
+                                
+                            </ul>
+                        </div>
+                        <!-- copyright -->
+                        <div class="copy clearfix wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.2s">
+                            <span class="add d-b">网站名称：{$sys.name}<br />网站地址：{$sys.url}</span>
+                            <span class="beian d-b">备案编号：{$sys.bah}</span>
+                            <span class="about d-b">公司地址：{$sys.ads}</span>
+                        </div>
+                    </div>
+                    <div class="text-right col-xs-2 col-md-2 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.0s">
+                        <img src="{$sys.wei_code}" alt="" class='foot-erweima'>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </footer>
+    <!-- kefu start -->
+    <div class="asid_share" id="asid_share">
+        <div class="asid_share_box relative">
+            <a href="http://wpa.qq.com/msgrd?v=3&uin={$sys.qq}&site=qq&menu=yes"  target="_blank"><img alt="我有话说" title="我有话说" class="adid_icon" src="/static/web/images/icon_kefuqq.png"></a>
+        </div>
+        <div class="asid_share_box relative">
+            <a href="javascript:;"><img alt="联系我们" title="联系我们" class="adid_icon" src="/static/web/images/icon_telnum.png"></a>
+            <div class="asid_sha_layer tel-box" style="display:none;">
+                {$sys.tel}      </div>
+        </div>
+        <div class="asid_share_box relative">
+            <a href="javascript:;"><img alt="扫二微码" title="扫二微码" class="adid_icon" src="{$sys.wei_code}"></a>
+            <div class="asid_share_triangle" style="display:none;">
+                <em class="border_sj">&#9670;</em>
+                <span class="con_sj">&#9670;</span>
+            </div>
+            <div class="asid_sha_layer" style="width:155px;display:none;">
+                <p class="sweep_img"><img src="{$sys.wei_code}" width="132"></p>
+                <p class="pb6"><b>扫一扫</b></p>
+            </div>
+        </div>
+        <div class="asid_share_box relative" style="display:none;">
+            <a href="javascript:;"><img alt="返回顶部" title="返回顶部" class="adid_icon" src="/static/web/images/icon_back.png"></a>
+        </div>
+    </div>
+    <!-- kefu end -->
+    <script type="text/javascript" src="/static/web/js/jQuery.hhShare.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            //图片滚动特效
+            $('#asid_share').hhShare({
+                cenBox     : 'asid_share_box',  //里边的小层
+                icon       : 'adid_icon',
+                addClass   : 'red_bag',
+                titleClass : 'asid_title',
+                triangle   : 'asid_share_triangle', //鼠标划过显示图层，边上的小三角
+                showBox    : 'asid_sha_layer' //鼠标划过显示图层
+            });
+        });
+    </script>
+    <!-- /底部 -->
+
+</div>
+</body>
+</html>

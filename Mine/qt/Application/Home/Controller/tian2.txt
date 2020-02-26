@@ -1,0 +1,36 @@
+sql==>>data:Array
+(
+    [code] => 0
+    [data] => Array
+        (
+            [data] => Array
+                (
+                    [code1] => 0
+                )
+
+        )
+
+    [msg] => 密码输入有误
+)
+
+sql==>>code1:0
+sql==>>code2:
+sql==>>code1:no
+sql==>>data:Array
+(
+    [code] => 0
+    [data] => Array
+        (
+            [data] => Array
+                (
+                    [code1] => 0
+                )
+
+        )
+
+    [msg] => 密码输入有误
+)
+
+sql==>>code1:0
+sql==>>code2:
+sql==>>code1:no:密码输入有误

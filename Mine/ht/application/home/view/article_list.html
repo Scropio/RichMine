@@ -1,0 +1,191 @@
+{include file="common/head"/}
+<style type="text/css">
+    .paging li a {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 12px;
+    color: #999999;
+    font-size: 12px;
+    display: inline-block;
+    width: 31px;
+    height: 31px;
+    line-height: 31px;
+    border: 1px solid #8D8E8E;
+}
+</style>
+{if condition="$controller eq  'news' ||$controller eq  'course'"}
+
+ <div class="sunbanner" style="background:url(/static/web/images/subbanner-img.png) top center no-repeat"></div>
+    <!-- sub banner end -->
+
+    <!-- 搜索 -->
+    <section>
+        <div class="container w-1200 pr p-n list-case-center">
+            <!-- head -->
+            <div class="head wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+                <div class="title fl">
+                    <span class="zh">{$controller} {$title}</span>
+                    <span class="note">我们的作品，他们的故事<br />Our work, their stories</span>
+                </div>
+              <!--   <div class="search fr" id="search">
+                    <form action="/Article/search.html" method="get" class="search-form clearfix">
+                        <input name="keyword" type="text" placeholder="搜索案例">
+                        <input type="submit" class="btn btn-search fr" value="">
+                    </form>
+                </div> -->
+            </div>
+            <!-- head end-->
+        </div>
+    </section>
+    <!-- 搜索 -->
+
+    <!-- 新闻列表 -->
+    <section>
+        <div class='news  container w-1200'>
+            <!-- head -->
+            <div class='news-head'></div>
+            <!-- head -->
+            <div class='news-content'>
+                <!-- list -->
+                <div class='xb-list list-space-10 news-list'>
+                    <ul class='row'>
+                        {volist name="list" id="vo"}
+                        <li class="list-item wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0s"><div class='item-content'>
+                            <a class="title" href="{:url('home/'.$vo['catdir'].'/info',array('id'=>$vo['id'],'catId'=>$vo['catid']))}">{$vo.title}</a><time>{:toDate($vo['createtime'],'Y-m-d H:i:s')}</time></div>
+                        </li>
+                        {/volist}
+                    </ul>
+                </div>
+                <!-- list end -->
+            </div>
+            <!-- foot -->
+            <div class='news-foot'>
+                <!--&lt;!&ndash; 分页 &ndash;&gt;-->
+                <div class="paging p-b-40 p-t-40 wow fadeInUp" data-wow-duration="1s">
+                  {$page|raw}       
+              </div>
+           
+            </div>
+        </div>
+    </section>
+{/if}    
+{if condition="$controller eq  'kk'"}
+ <link rel="stylesheet" href="/static/home/css/base.css" id="camera-css" />
+  <link rel="stylesheet" href="/static/home/css/framework.css" />
+ <link rel="stylesheet" href="/static/home/css/style.css" />
+ <link rel="stylesheet" href="/static/home/css/noscript.css" media="screen,all" id="noscript" />
+
+<!-- pagetitle start here -->
+<section id="pagetitle-wrapper">
+    <div class="pagetitle-content">
+        <h2>{$title}</h2>
+    </div>
+</section>
+<!-- pagetitle end here -->
+<!-- breadcrumb start here -->
+<section id="breadcrumb-wrapper">
+    <div id="breadcrumb-content">
+        <ul>
+            <li><a href="{:url('home/index/index')}" title="CLTPHP">首页</a></li>
+            <li><a href="#">{$title}</a></li>
+        </ul>
+    </div>
+</section>
+<!-- breadcrumb end here -->
+<!-- maincontent start here -->
+<section id="content-wrapper">
+    <div class="row">
+        <div class="eight columns">
+            <aside>
+                <ul class="popular-list">
+                    {volist name="list" id="vo"}
+                    <li>
+                        <a href="{:url('home/'.$vo['catdir'].'/info',array('id'=>$vo['id'],'catId'=>$vo['catid']))}" title="{$vo.title}">
+                            <img src="{$vo.title_thumb}" alt="" class="img-border" />
+                            <p class="popular-title" style="{$vo.title_style}">{$vo.title}</p>
+                            <p class="popular-title"></p>
+                            <p class="comment-count"><i title="点击次数">点击：{$vo.hits}</i></p>
+                            <p class="comment-count"><i title="评论次数"><span id = "sourceId::{$vo.id}" class = "cy_cmt_count" ></span></i></p>
+                            <p class="author-name">{:toDate($vo['createtime'],'Y-m-d H:i:s')}</p>
+                        </a>
+                    </li>
+                    {/volist}
+                </ul>
+            </aside>
+            {$page|raw}
+        </div>
+        <div class="four columns">
+            <aside>
+                <h5>推荐内容</h5>
+                <ul class="sidebar-list">
+                    {php} $catid = input("catId");{/php}
+                    {clt:listjoin db='article' dbfield='catid' id='vo' joindb='category' joinfield='id' where='posid = 2 and catid=".$catid." ' order="sort asc,createtime desc" limit='10'}
+                       <li><a href="{:url('home/'.$vo['catdir'].'/info',array('id'=>$vo['id'],'catId'=>$vo['catid']))}" style="{:style($vo['title_style'])}" title="{$vo.title}">{$vo.title}</a></li>
+                    {/clt:listjoin}
+                </ul>
+            </aside>
+        </div>
+    </div>
+</section>
+{/if}
+{if condition="$controller eq 'services'"}
+<!-- maincontent end here -->
+ <div class="sunbanner" style="background:url(/static/web/images/subbanner-img.png) top center no-repeat"></div>
+    <!-- sub banner end -->
+
+    <!-- 搜索 -->
+    <section>
+        <div class="container w-1200 pr p-n list-case-center">
+            <!-- head -->
+            <div class="head wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+                <div class="title fl">
+                    <span class="zh">{$controller} {$title}</span>
+                    <span class="note">我们的作品，他们的故事<br />Our work, their stories</span>
+                </div>
+               <!--  <div class="search fr" id="search">
+                    <form action="#" method="get" class="search-form clearfix">
+                        <input name="keyword" type="text" placeholder="搜索案例">
+                        <input type="submit" class="btn-search fr" value="">
+                    </form>
+                </div> -->
+            </div>
+            <!-- head end-->
+        </div>
+    </section>
+    <!-- 搜索 -->
+
+    <!-- 列表 -->
+    <section>
+        <div class="container w-1200 xb-list list-space list-case-center tab-pane active" role="datalist" data-toggle="fade" data-cell=".list-item" data-mask=".item-layer">
+            <ul class="row">
+                {volist name="list" id="vo"} 
+                <li class="col-xs-3 col-md-3 list-item wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+                    <div class="inner-wrap">
+                        <a href="{:url('home/'.$vo['catdir'].'/info',array('id'=>$vo['id'],'catId'=>$vo['catid']))}" class="item-media block">
+                            <img src="{$vo.thumb}">
+                        </a>
+                        <div class="item-content">
+                            <a href="{:url('home/'.$vo['catdir'].'/info',array('id'=>$vo['id'],'catId'=>$vo['catid']))}" class="title text-ellipsis">{$vo.title}</a>
+                            <time>发布日期 {:toDate($vo['createtime'],'Y-m-d H:i:s')}</time>
+                        </div>
+                        <div class="item-layer">
+                            <a href="{:url('home/'.$vo['catdir'].'/info',array('id'=>$vo['id'],'catId'=>$vo['catid']))}" class="view">
+                                <span class="fs-14 bold c-fff d-b m-b-10">{$vo.title}</span>
+                                <span class="fs-12 c-fff desc">{$vo.description}</span>
+                                <span class="btn-check">查看网站案例</span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                {/volist}
+            </ul>
+              <div class='news-foot'>
+                <div class="paging p-b-40 p-t-40 wow fadeInUp" data-wow-duration="1s">
+                  {$page|raw}       
+              </div>
+           
+            </div>
+        </div>
+    </section>
+{/if}
+{include file="common/footer"/}
+<script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId={$changyan.app_id}"></script>

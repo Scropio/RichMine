@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="zh-cn"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="zh-cn"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="zh-cn">
+    <!--<![endif]-->
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>{$info['title']??($title ? $title : $sys.title)}</title>
+        <meta name="keywords" content="{$info['keywords']??($keywords ? $keywords : $sys.key)}" />
+        <meta name="description" content="{$info['description']??($description ? $description : $sys.des)}" />
+
+       <!--   <link rel="stylesheet" href="/static/home/css/base.css" id="camera-css" />
+          <link rel="stylesheet" href="/static/home/css/framework.css" />
+         <link rel="stylesheet" href="/static/home/css/style.css" />
+         <link rel="stylesheet" href="/static/home/css/noscript.css" media="screen,all" id="noscript" /> -->
+
+
+        <link rel="shortcut icon" href="/static/home/images/favicon.ico" />
+
+
+        <script>
+            var HOME = '/static/home';
+        </script>
+        <script src="/static/home/js/jquery.min.js"></script>
+        <script src="/static/home/js/jquery.easing-1.3.min.js"></script>
+        <script src="/static/home/js/tooltip.js"></script>
+        <script src="/static/home/js/dropdown.js"></script>
+        <script src="/static/home/js/tinynav.min.js"></script>
+        <script src="/static/home/js/camera.min.js"></script>
+        <script src="/static/home/js/jquery.fancybox.js?v=2.0.6"></script>
+        <script src="/static/home/js/jquery.fancybox-media.js?v=1.0.3"></script>
+        <script src="/static/home/js/jquery.ui.totop.min.js"></script>
+        <script src="/static/home/js/ddaccordion.js"></script>
+        <script src="/static/home/js/jquery.twitter.js"></script>
+        <script src="/static/home/js/jflickrfeed.min.js"></script>
+        <script src="/static/home/js/faq-functions.js"></script>
+        <script src="/static/home/js/isotope.js"></script>
+        <script src="/static/home/js/theme-functions.js"></script>
+
+        <!-- BASE JS -->
+        <script src="/static/web/js/jquery-1.11.3.min.js"></script>
+        <script src="/static/web/js/jquery.easing.min.js"></script>
+        <!-- zui lib-1.6.0 -->
+        <link href="/static/web/css/zui.min.css" rel="stylesheet">
+        <script src="/static/web/js/zui.min.js"></script>
+        <!-- animate -->
+        <link rel="stylesheet" href="/static/web/css/animate.css">
+        <script src="/static/web/js/wow.min.js"></script>
+        <!-- 布局，版面 -->
+        <link rel="stylesheet" href="/static/web/css/xbui.base.css">
+        <link rel="stylesheet" href="/static/web/css/xbui.lib.css">
+        <!-- layui -->
+        <link rel="stylesheet" href="/static/web/css/layui.css">
+        <script src="/static/web/js/layui.js"></script>
+        <script src="/static/web/js/jquery.skitter.min.js"></script>
+        <script src="/static/web/js/jquery.lazyload.min.js"></script>
+        <script src="/static/web/js/xbui.plugins.js"></script>
+        <script src="/static/web/js/xbui.common.run.js"></script>
+
+       <style type="text/css">
+           a{text-decoration:none!important;}
+           
+         
+       </style>
+
+        <script>
+            //设为首页 www.jb51.net
+            function SetHome(obj, url) {
+                try {
+                    obj.style.behavior = 'url(#default#homepage)';
+                    obj.setHomePage(url);
+                } catch (e) {
+                    if (window.netscape) {
+                        try {
+                            netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+                        } catch (e) {
+                            alert("抱歉，此操作被浏览器拒绝！\n\n请在浏览器地址栏输入“about:config”并回车然后将[signed.applets.codebase_principal_support]设置为'true'");
+                        }
+                    } else {
+                        alert("抱歉，您所使用的浏览器无法完成此操作。\n\n您需要手动将【" + url + "】设置为首页。");
+                    }
+                }
+            }
+
+            //收藏本站 www.jb51.net
+            function AddFavorite(title, url) {
+                try {
+                    window.external.addFavorite(url, title);
+                } catch (e) {
+                    try {
+                        window.sidebar.addPanel(title, url, "");
+                    } catch (e) {
+                        alert("抱歉，您所使用的浏览器无法完成此操作。\n\n加入收藏失败，请进入新网站后使用Ctrl+D进行添加");
+                    }
+                }
+            }
+        </script>
+        <!-- IE Fix for HTML5 Tags -->
+        <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    </head>
+    <body>
+        <div class="layout">
+
+            <!-- 头部 -->
+            <!-- 页头 -->
+            <header class="header xb-mod-header-001">
+                <div class="headerWrapper">
+                    <div class="rowBlock header-top">
+                        <div class="container w-1200 pr p-n">
+                            <!-- logo -->
+                            <div class="nav-brand pull-left">
+                                <a href="/" class="logo" ><img style="width: 100%" src="{$sys.logo}" alt=""></a>
+                            </div>
+                            <div class="header-right pull-right">
+                                <!-- navbar -->
+                                <ul class="nav nav-main pull-right" role="navigation" data-cell=".nav-item" data-toggle="movingLine"
+                                 data-direction="h" data-trigger="mouseover" data-target=".submenu-wrap" data-scroll="true">
+                                    <li class="nav-item {if condition="$controller eq 'index'"}active{/if}">
+                                        <a href="{:url('home/index/index')}">
+                                            <span class="zh">首页</span>
+                                            <span class="en">home</span>
+                                        </a>
+                                    </li>
+                                   {volist name="category" id="vo"}
+                                    <li class="nav-item {if condition="$controller eq $vo['catdir']"}active{/if}">
+                                        {if condition="$vo['child'] eq 1"}
+                                        <a href="{:url('home/'.$vo['catdir'].'/index',['catId'=>$vo['id']] )}">
+                                            <span class="zh">{$vo.catname}</span>
+                                            <span class="en">{$controller}</span>
+                                        </a>
+                                        <div class="submenu-wrap">
+                                            <ul class="submenu">
+                                                 {volist name="$vo.sub" id="v"}
+                                                <li>
+                                                    <a href="{:url('home/'.$vo['catdir'].'/index',['catId'=>$v['id']] )}">{$v.catname}</a>
+                                                </li>
+                                                  {/volist}
+                                            </ul>
+                                        </div>
+                                        {else /}
+                                         <a href="{:url('home/'.$vo['catdir'].'/index',['catId'=>$vo['id']] )}">
+                                            <span class="zh">{$vo.catname}</span>
+                                            <span class="en">{$controller}</span>
+                                        </a>
+                                        {/if}
+                                    </li>
+                                     {/volist}
+                                
+                                  
+                                    <span class="movingLine" id="aline"></span>
+                                    <!-- contact -->
+                                    <div class="nav-contact pull-right">
+                                        <span>{$sys.tel}</span>
+                                    </div>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </header>
+
+<!-- <header>
+    <div id="main-wrapper">
+      
+        <div id="logo">
+            <a href="{:url('home/index/index')}" title="CLTPHP内容管理系统"><img src="{$sys.logo}" alt="CLTPHP" style="width: 160px;height: 43px;" /></a>
+        </div>
+      
+        <nav id="mainmenu">
+            <ul id="menu">
+                <li {if condition="$controller eq 'index'"}class="selected"{/if}><a href="{:url('home/index/index')}" title="CLTPHP内容管理系统">首页</a></li>
+                <li {if condition="$controller eq 'indextest'"}class="selected"{/if}><a href="{:url('home/index/indextest')}" title="CLTPHP内容管理系统">首页</a></li>
+                {volist name="category" id="vo"}
+                <li {if condition="$controller eq $vo['catdir']"}class="selected"{/if}>
+                {if condition="$vo['child'] eq 1"}
+                <a href="#">{$vo.catname}</a>
+                <ul>
+                    {volist name="$vo.sub" id="v"}
+                    <li><a href="{:url('home/'.$vo['catdir'].'/index',['catId'=>$v['id']] )}" title="{$v.catname}-CLTPHP内容管理系统"><span>-</span> {$v.catname}</a></li>
+                    {/volist}
+                </ul>
+                {else /}
+                <a href="{:url('home/'.$vo['catdir'].'/index',['catId'=>$vo['id']] )}" title="{$vo.catname}-CLTPHP内容管理系统">{$vo.catname}</a>
+                {/if}
+                </li>
+                {/volist}
+            </ul>
+        </nav>
+       
+    </div>
+</header>  -->

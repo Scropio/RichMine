@@ -1,0 +1,24 @@
+<?php if (!defined('THINK_PATH')) exit();?><style>
+    .aui-active{color: #E95F8F!important;border: 0!important;}
+</style>
+
+<div style="height:3rem; "></div>
+
+<footer class="aui-bar aui-bar-tab" id="footer" style="background-color: rgb(36,40,52); padding:0.45rem 0 0.3rem 0;">
+    <div class="aui-bar-tab-item <?php if ('home' == $tab)echo 'aui-active'; else echo ''; ?>" tapmode onclick="window.location.href='/index.php/home/index/index'">
+        <img src="/Public/site/images/home-icon.png" alt="" width="50" height="36" style="margin: 0 auto;margin-bottom: 2px;">
+        <div class="aui-bar-tab-label">首页</div>
+    </div>
+    <div class="aui-bar-tab-item <?php if ('trade' == $tab)echo 'aui-active'; else echo ''; ?>" tapmode onclick="window.location.href='/index.php/home/index/trade'">
+        <img src="/Public/site/images/trade-icon.png" alt="" width="50" height="36" style="margin: 0 auto;margin-bottom:2px;">
+        <div class="aui-bar-tab-label">交易市场</div>
+    </div>
+<!--    <div class="aui-bar-tab-item <?php if ('kuangc' == $tab)echo 'aui-active'; else echo ''; ?>" tapmode onclick="window.location.href='/index.php/home/index/kuangc'">-->
+<!--        <img src="/Public/site/images/kuangc-icon.png" alt="" width="35" height="35" style="margin: 0 auto;margin-bottom: 5px;">-->
+<!--        <div class="aui-bar-tab-label">我的矿场</div>-->
+<!--    </div>-->
+    <div class="aui-bar-tab-item <?php if ('baoz' == $tab)echo 'aui-active'; else echo ''; ?>" tapmode onclick="window.location.href='/index.php/home/index/baoz'">
+        <img src="/Public/site/images/baoz-icon.png" alt="" width="50" height="36" style="margin: 0 auto;margin-bottom:2px;">
+        <div class="aui-bar-tab-label">我的花园</div>
+    </div>
+</footer>

@@ -1,0 +1,97 @@
+<!-- Scripts -->
+<!-- <script src="/static/mobile/js/vendor/jquery-2.1.0.min.js"></script> -->
+<!-- <script src="/static/mobile/js/helper.js"></script>
+<script src="/static/mobile/js/vendor/HeadsUp.js"></script>
+<script src="/static/mobile/js/vendor/jquery.smoothState.js"></script>
+<script src="/static/mobile/js/vendor/chart.min.js"></script>
+<script src="/static/mobile/js/vendor/jquery.mixitup.min.js"></script>
+<script src="/static/mobile/js/vendor/jquery.swipebox.min.js"></script>
+<script src="/static/mobile/js/vendor/masonry.min.js"></script>
+<script src="/static/mobile/js/vendor/swiper.min.js"></script>
+<script src="/static/mobile/js/vendor/materialize.min.js"></script>
+<script src="/static/mobile/js/main.js"></script> -->
+<footer class="footer" role="footer" data-padding="true">
+    <div class="call">
+        <a href="tel:{$sys.tel}">
+            <img src="/static/web/mobile/images/foot-contact-icon.png" alt="">
+            <span class="tel">{$sys.tel}</span>
+            <span class="zh">在线拨号</span>
+        </a>
+    </div>
+    <div class="add">
+        <span class="zh">{$sys.name}</span>
+        <span class="note"></span>
+    </div>
+</footer>
+<div class="foot-nav">
+    <ul>
+        <li><a href="javascript:void(0)" return="false" onclick="openNavFoot()"><img src="/static/web/mobile/images/nav.png" alt=""><span>导航栏目</span></a></li>
+        <li><a href="{:url('mobile/service/index',['catId'=>3])}"><img src="/static/web/mobile/images/anli.png" alt=""><span>服务案例</span></a></li>
+        <li><a href="tel:{$sys.tel}"><img src="/static/web/mobile/images/phone.png" alt=""><span>电话联系</span></a></li>
+    </ul>
+</div>
+<div class="nav-foot">
+    <ul> 
+        <li class="active"><a href="{:url('index/index')}">主页</a></li>
+        {volist name="category" id="vo"}
+     
+        <li class="">
+        	
+        	 {if condition="$vo['child'] eq 1"}
+        	 <a  href="###">{$vo.catname}</a>
+            <div>
+            	{volist name="$vo.sub" id="v"}
+		       <a style="line-height: 2rem;color: #ff7c01" href="{:url('mobile/'.$vo['catdir'].'/index',['catId'=>$v['id']] )}">{$v.catname}</a>
+		        {/volist}
+            </div> 
+            {else /}
+            <a href="{:url('mobile/'.$vo['catdir'].'/index',['catId'=>$vo['id']] )}">{$vo.catname}</a>
+           {/if} 
+        </li>
+     
+        {/volist}
+    </ul>
+</div>
+
+<script>
+    var navFoot = $('.nav-foot');
+    function openNavFoot(){
+        if( navFoot.hasClass('on')){
+            navFoot.removeClass('on');
+            navFoot.stop().animate({
+                'left':'-100%'
+            })
+        }else{
+            navFoot.addClass('on');
+            navFoot.stop().animate({
+                'left':'0'
+            })
+        }
+    }
+</script>
+<!-- //页尾 -->
+
+<!-- 微信二维码 -->
+
+<script>
+    function openWechat(laiyuan){
+        var wechat = $('.layer-wechat');
+        layer.open({
+            type: 1,
+            title:0,
+            tipsMore: true,
+            closeBtn:1,
+            area: ['auto', 'auto'],
+            shadeClose:true,
+            content:wechat,
+            success: function(layero, index){
+                layero.find('#yuyue_sub_design').click(function(){
+                    //layer.close(index);
+                })
+            }
+        });
+    }
+</script>
+<!-- /底部 -->
+</body>
+</html>

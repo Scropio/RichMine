@@ -1,0 +1,30 @@
+<foreach name="data['data']['data']" item="item">
+    <div class="aui-row order-list">
+        <div class="aui-col-xs-5">
+            <div class="aui-row order-main1">
+                <p>
+                    <if condition="$item.out_userid == $userInfo['data']['data']['id']">
+                        转账记录
+                        <else />
+                        收款记录
+                    </if>
+                </p>
+                <p>
+                    <if condition="$item.out_userid == $userInfo['data']['data']['id']">
+                        收款方：{$item.in_username}
+                        <else />
+                        转账方：{$item.out_username}
+                    </if>
+                </p>
+                <p>
+                    数量：{$item.nums}
+                </p>
+            </div>
+        </div>
+        <div class="aui-col-xs-7">
+            <div class="aui-row order-main2" style="text-align: right">
+                <p>{$item.createtime}</p>
+            </div>
+        </div>
+    </div>
+</foreach>

@@ -1,0 +1,28 @@
+{include file="common/head"/}
+<div class="admin-main layui-anim layui-anim-upbit">
+
+    <form action="/admin.php/agent/auth" method="post">
+
+        <select name="level">
+
+            {volist name="userLevels" id="vo"}
+                <option value="{$vo.level_id}" {php}if($level == $vo['level_id'])echo "selected"{/php}>{$vo.level_name}</option>
+            {/volist}
+
+        </select>
+
+        <input type="submit" value="查询" />
+
+    </form>
+
+    {if condition="1 == $slug"}
+        <ul>
+            {volist name="data" id="vo"}
+                <li><span>用户名：{$vo.username}&nbsp;&nbsp;</span><span>直推人数：{$vo.zhitui}&nbsp;&nbsp;</span><span>团队人数：{$vo.tuandui}&nbsp;&nbsp;</span></li>
+                <hr />
+            {/volist}
+        </ul>
+    {/if}
+
+</div>
+{include file="common/foot"/}

@@ -1,0 +1,91 @@
+{include file="common/head"/}
+<script src="/static/common/js/jquery.2.1.1.min.js"></script>
+<div class="admin-main layui-anim layui-anim-upbit">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>申诉列表</legend>
+    </fieldset>
+    <div>
+        <div class="table-responsive">
+            <table class="layui-table table-hover">
+                <thead>
+                <tr>
+                    <th>订单编号</th>
+                    <th style="width: 20%">申诉内容</th>
+                    <th>申诉用户</th>
+                    <th>申诉时间</th>
+                    <th>申诉状态</th>
+                    <th>管理操作</th>
+                </tr>
+                </thead>
+                <!--内容容器-->
+                <tbody id="con">
+                {volist name="data" id="v"}
+                <tr>
+                    <td>{$v.order_id}</td>
+                    <td>{$v.content}</td>
+                    <td>{$v.username}</td>
+                    <td>{:toDate($v.time,'Y-m-d h:i:s')}</td>
+                    <td class="sta{$v.id}">
+                        {eq name="$v.status" value="0"}
+                        <span style="color:red;cursor: pointer;" onclick="status({$v.id})">未处理</span>
+                        {else /}
+                        <span style="color:green">已处理</span>
+                        {/eq}
+                    </td>
+                    <td>
+                        <input type="hidden" id="voucher_image{$v.id}" value="{$v.evidence}">
+                        <a class="layui-btn layui-btn-sm" onclick="voucher({$v.id})">查看凭证</a>
+                    </td>
+                </tr>
+                {/volist}
+                </tbody>
+            </table>
+            {$data|raw}
+        </div>
+    </div>
+
+</div>
+{include file="common/foot"/}
+<script>
+    layui.use('form',function() {
+        var form = layui.form, $ = layui.jquery;
+    });
+</script>
+
+<!--查看凭证-->
+<script>
+    function voucher(id) {
+        var link = $('#voucher_image'+id).val();
+        layer.open({
+            type: 1,
+            title: '申诉凭证',
+            offset: ['5%'],
+            closeBtn: 2,
+            area: ['50%','600px'],
+            maxWidth:'500px',
+            skin: 'layui-layer-nobg', //没有背景色
+            shadeClose: true,
+            content: "<img src='"+link+"' style='width: 35%'>"
+        })
+    }
+</script>
+<!--end查看凭证-->
+
+<!--处理-->
+<script>
+    function status(id){
+        $.post("{:url('Appeal/status')}",{id:id},function (data) {
+
+            if (data.code == 1){
+                $(".sta"+id).html("<span style='color:green'>已处理</span>");
+
+                alert(data.msg);
+                return false;
+            }else{
+                alert(data.msg);
+                return false;
+            }
+        });
+    }
+</script>
+<!--end处理-->

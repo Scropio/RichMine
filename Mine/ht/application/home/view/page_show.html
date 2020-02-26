@@ -1,0 +1,113 @@
+{include file="common/head"/}
+
+
+<div class="sunbanner" style="background:url(/static/web/images/subbanner-img.png) top center no-repeat"></div>
+    <!-- sub banner end -->
+
+    <!-- 搜索 -->
+    <section>
+        <div class="container w-1200 pr p-n list-case-center">
+            <!-- head -->
+            <div class="head wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0s">
+                <div class="title fl">
+                    <span class="zh">{$controller} {$info.title}</span>
+                    <span class="note">我们的作品，他们的故事<br />Our work, their stories</span>
+                </div>
+                <div class="search fr" id="search">
+                    <form action="/Article/search.html" method="get" class="search-form clearfix">
+                        <input name="keyword" type="text" placeholder="搜索案例">
+                        <input type="submit" class="btn btn-search fr" value="">
+                    </form>
+                </div>
+            </div>
+            <!-- head end-->
+        </div>
+    </section>
+    <!-- 搜索 -->
+
+
+    <!-- 详情 -->
+    <div class='detail container w-1200'>
+        <!-- head -->
+        <div class='detail-head'>
+            <div class='detail-title text-center wow fadeInUp' data-wow-duration='1.5s' data-wow-delay='0s'>
+                <span class='zh d-b'>{$info.title}</span>
+                <div class="note" style="display:none">
+                    <span class="author">发布人:龙兵科技</span>
+                    <span class="time">16-04-12</span>
+                </div>
+
+            </div>
+        </div>
+        <!-- desc -->
+        <div class='detail-desc wow fadeInUp' data-wow-duration='1.5s' data-wow-delay='0s'></div>
+        <!-- head -->
+        <div class='detail-content wow fadeInUp' data-wow-duration='1.5s' data-wow-delay='0s'>
+           <div class="eight columns">
+            <!-- blog post 1 -->
+            <div class="blog-post">
+                 {if condition="!empty($info['thumb'])"}
+                <img  src="{:imgUrl($info['thumb'],'__HOME__/images/sample-images/blog-post1.jpg')}" alt="{$info.title}" />
+                 {/if}
+                <div class="row">
+                    <div class="columns">
+                        {$info.content|raw}
+                    </div>
+                </div>
+            </div>
+           </div>
+            <p style="text-align:left;">
+                <span style="font-size:14px;"> </span>
+            </p>    </div>
+        <div class="w-p100 container p-b-30 p-t-30">
+            <div class="col-xs-3  wow fadeInUp" data-wow-duration='1.5s' data-wow-delay='0s'>
+                <p class="title">客服电话</p>
+                <p class="num">{$sys.tel}（工作日9:00-18:00）</p>
+            </div>
+            <div class="col-xs-3  wow fadeInUp" data-wow-duration='1.5s' data-wow-delay='0.2s'>
+                <p class="title">商务合作</p>
+                <p class="num">{$sys.email}</p>
+            </div>
+            <div class="col-xs-2  wow fadeInUp" data-wow-duration='1.5s' data-wow-delay='0.4s'>
+                <p class="title">招聘邮箱</p>
+                <p class="num">{$sys.email}</p>
+            </div>
+            <div class="col-xs-4  wow fadeInUp" data-wow-duration='1.5s' data-wow-delay='0.6s'>
+                <p class="title">公司地址</p>
+                <p class="num">{$sys.ads}</p>
+            </div>
+        </div>
+        <!-- foot -->
+        <div class='detail-foot'>
+            <div class='detail-paging'>
+            </div>
+        </div>
+    </div>
+    <!-- 详情 -->
+
+    <!-- 最新资讯 -->
+    <section>
+        <div class='news-stretch container w-1200 center autoheight'>
+            <!-- head -->
+            <div class='stretch-head wow fadeInUp' data-wow-duration='1.5s' data-wow-delay='0s'>
+                <div class='title'><span class='zh'>最新资讯</span></div>
+            </div>
+            <!-- head -->
+            <div class='stretch-body'>
+                <!-- list -->
+                <div class='xb-list list-space-10 stretch-list'>
+                    <ul class='row'>
+                          {clt:listjoin db='article' dbfield='catid' id='vo' joindb='category' joinfield='id' where="catid = 5 or catid = 6" order="sort asc,createtime desc" limit='9'}
+                        <li class='list-item col-xs-4 col-md-4 wow fadeInUp' data-wow-duration='1.5s' data-wow-delay='0s'>
+                            <div class='item-content'><a href="{:url('home/'.$vo['catdir'].'/info',array('id'=>$vo['id'],'catId'=>$vo['catid']))}">{$vo.title}</a></div>
+                        </li>
+                        {/clt:listjoin}        
+                    </ul>
+                </div>
+            </div>
+            <!-- head -->
+            <div class='stretch-foot'></div>
+        </div>
+    </section>
+<!-- maincontent end here -->
+{include file="common/footer"/}

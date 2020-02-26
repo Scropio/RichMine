@@ -1,0 +1,141 @@
+
+{include file="common/head"/}
+<body>
+<!-- 页头 -->
+{include file="common/nav"/}
+<!-- 主体 -->
+
+
+<!-- 主体 -->
+<div class="main">
+    <div class="mainWrap w-750">
+
+        <!--swiper-->
+        <div class="swiper-container swiper-index pr">
+            <div class="swiper-wrapper">
+                {volist name="adList" id="vo" key="i"}
+                <div class="swiper-slide">
+                    <a href="javascript:;" target="_blank"><img src="{$vo.pic}"></a>
+                </div>   
+                {/volist}   
+            </div>
+
+            <div class="swiper-pagination"></div>
+        </div>
+        <!--swiper end -->
+
+        <!-- module -->
+        <div class="module">
+            <div class="module-heading autoheight">
+                <span class="zh">服务案例</span>
+                <img src="/static/web/mobile/images/dd.png" alt="">
+                <span class="en">service</span>
+            </div>        <div class="swiper-proclass">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="{:url('mobile/team/index',['catId'=>7] )}">
+                        <img src="/static/web/mobile/images/5b909013322d4.png" alt="">
+                        <span class="zh">展示型小程序</span>
+                    </a>
+                </div><div class="swiper-slide">
+                <a href="{:url('mobile/team/index',['catId'=>7] )}">
+                    <img src="/static/web/mobile/images/5b90901f0db95.png" alt="">
+                    <span class="zh">电商型小程序</span>
+                </a>
+            </div><div class="swiper-slide">
+                <a href="{:url('mobile/team/index',['catId'=>7] )}">
+                    <img src="/static/web/mobile/images/5b90902975bb8.png" alt="">
+                    <span class="zh">行业平台小程序</span>
+                </a>
+            </div>          </div>
+        </div>
+        </div>
+        <!-- module end -->
+
+        <!-- module -->
+        <div class="module bg-f7f7f7">
+            <div class="module-heading autoheight">
+                <span class="zh">成功案例</span>
+                <img src="/static/web/mobile/images/dd.png" alt="">
+                <span class="en">case</span>
+            </div>
+            <div class="swiper-case">
+                <div class="swiper-wrapper">
+                      {clt:listjoin db='article' dbfield='catid' id='vo' joindb='category' joinfield='id' where="catid = 3" order="sort asc,createtime desc" limit='4'}
+                    <div class="swiper-slide">
+                       
+                        <div class="bg">
+                            <div class="content"><a href="{:url('mobile/'.$vo['catdir'].'/info',array('id'=>$vo['id'],'catId'=>$vo['catid']))}"><img src="{$vo.thumb}" alt=""></a></div>
+                        </div>
+                       
+                   </div>
+                     {/clt:listjoin}   
+             </div>
+            </div>
+            <div class="explore"><a href="{:url('mobile/team/index',['catId'=>3] )}">查看更多案例</a></div>
+        </div>
+        <!-- module end -->
+
+        <!-- module -->
+        <div class="module module-partner">
+            <div class="title">众多大牌客户的信任与选择</div>
+            <div class="list-partner">
+                <ul>
+                    <li><a href=""><img src="/static/web/mobile/images/5a0d7140b3159.jpg" alt="四川大学"></a></li>
+                    <li><a href=""><img src="/static/web/mobile/images/5a0eb6ed3d005.jpg" alt="成都义工联合会"></a></li>
+                    <li><a href=""><img src="/static/web/mobile/images/5a0d71bf46ad0.jpg" alt="鱼羊环保"></a></li>
+                    <li><a href=""><img src="/static/web/mobile/images/5a0d71a11e0b0.jpg" alt="珍益文化"></a></li>
+                    <li><a href=""><img src="/static/web/mobile/images/5a0d7190aafd5.jpg" alt="飞视美"></a></li>
+                    <li><a href=""><img src="/static/web/mobile/images/5a0d717f1c904.jpg" alt="红专设计"></a></li>
+                    <li><a href=""><img src="/static/web/mobile/images/5a0d7175b7d46.jpg" alt="蓝色卫生"></a></li>
+                    <li><a href=""><img src="/static/web/mobile/images/5a0d716db3673.jpg" alt="状元鸭"></a></li>
+                    <li><a href=""><img src="/static/web/mobile/images/5a0d716644064.jpg" alt="锦城美都"></a></li>
+                    <li><a href=""><img src="/static/web/mobile/images/5a0d715e55093.jpg" alt="古兰装饰"></a></li>
+                    <li><a href=""><img src="/static/web/mobile/images/5a0d71512cc47.jpg" alt="帝成建筑"></a></li>
+                    <li><a href=""><img src="/static/web/mobile/images/5a0d700448e56.jpg" alt="成都小布包科技"></a></li>          
+                </ul>
+            </div>
+        </div>
+        <!-- module end -->
+
+        <!-- module -->
+        <div class="module module-news">
+            <div class="swiper-newstab">
+                <div class="swiper-wrapper" id="tabs">
+                    <div class="swiper-slide active">小程序方案</div><div class="swiper-slide active">小程序动态</div><div class="swiper-slide active">公司动态</div>          </div>
+            </div>
+            <div class="news-group">
+                <div class="list-news">
+                    <ul>
+                        {clt:listjoin db='article' dbfield='catid' id='vo' joindb='category' joinfield='id' where="catid = 3" order="sort asc,createtime desc" limit='6'}
+                        <li><a href="{:url('mobile/'.$vo['catdir'].'/info',array('id'=>$vo['id'],'catId'=>$vo['catid']))}"><span class="zh">{$vo.title}</span><span class="time">{$vo.time}</span></a></li>
+                        {/clt:listjoin}        
+                    </div>
+                    <div class="list-news">
+                <ul>
+                     {clt:listjoin db='article' dbfield='catid' id='vo' joindb='category' joinfield='id' where="catid = 7" order="sort asc,createtime desc" limit='6'}
+                        <li><a href="{:url('mobile/'.$vo['catdir'].'/info',array('id'=>$vo['id'],'catId'=>$vo['catid']))}"><span class="zh">{$vo.title}</span><span class="time">{$vo.time}</span></a></li>
+                        {/clt:listjoin}
+                </div>
+                <div class="list-news">
+                <ul>
+
+                    {clt:listjoin db='article' dbfield='catid' id='vo' joindb='category' joinfield='id' where="catid = 5 or catid = 6" order="sort asc,createtime desc" limit='6'}
+                        <li><a href="{:url('mobile/'.$vo['catdir'].'/info',array('id'=>$vo['id'],'catId'=>$vo['catid']))}"><span class="zh">{$vo.title}</span><span class="time">{$vo.time}</span></a></li>
+                        {/clt:listjoin}
+
+                     </div>        
+               </div>
+            <div class="explore"><a href="/lists/3">查看更多动态</a></div>
+        </div>
+        <!-- module end -->
+
+    </div>
+</div>
+
+
+<!-- /主体 -->
+
+<!-- 底部 -->
+<!--footer-->
+{include file="common/foot"/}

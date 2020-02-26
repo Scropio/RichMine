@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>祈福香火</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/app/css/aui.css" />
+    <script src="__PUBLIC__/app/script/jquery.min.js"></script>
+    <style>
+        .flower_box{
+            border-radius:4px;text-align: center; border: 1px solid #E95F8F; margin-left:1%; float: left; width: 48%; margin-top: 1rem;
+        }
+        .flower_box:nth-child(2n){
+            margin-left:2%;
+        }
+    </style>
+</head>
+{:W('Body/Index')}
+{:W('Head/Index')}
+
+    <div class="aui-content" style="overflow: scroll;height: 80%;">
+        <div class="aui-row" style="margin-bottom:3.2rem">
+
+            <foreach name="data['data']['data']" item="item">
+                <div class="aui-col-xs-6 flower_box">
+
+                    <div style="width: 98%;height:98%; margin-top: 1%; margin-left:1%; background-color: #000; margin-bottom: 0.1rem;">
+                        <div class="aui-row" style=" margin-top: 0.1rem; margin-bottom: 0.1rem;">
+                            <div class="aui-col-xs-12" style="padding:10px;">
+                                <img src="{$item.thumb}" alt="" width="100%">
+                            </div>
+                        </div>
+
+                        <div class="aui-row">
+                            <div class="aui-col-xs-12">
+                                <span style="color: white;letter-spacing:1px; text-align: center; text-indent: 0.5rem;font-size: 15px; ">{$item.title}</span>
+                            </div>
+                        </div>
+
+                        <div class="aui-row">
+                            <div class="aui-col-xs-6" style="margin-top: 5px;">
+                                <img src="__PUBLIC__/site/images/877fbc05ed74cba6e745976e8f9c6ee.png" alt="" width="100%" style="padding: 0px;">
+                            </div>
+                            <div class="aui-col-xs-6" style="text-align: right; padding-right: 0.2rem; margin-top: 0.25rem; "><span style="font-size:0.65rem;color: white;">{$item.adopt_time}</span></div>
+                        </div>
+
+                        <div class="aui-row" style="font-size:0.59rem; margin-top:4px; padding-left: 0.3rem; padding-right: 0.1rem">
+                            <div class="aui-col-xs-4" style="text-align: left"><span style="color: #E95F8F">价值范围:</span></div>
+                            <div class="aui-col-xs-8" style="text-align: right"><span style="color: white;font-size: 12px;">{$item.price_one}-{$item.price_two}</span></div>
+                        </div>
+
+                        <div class="aui-row" style="font-size:0.59rem; margin-top:4px; padding-left: 0.3rem; padding-right: 0.1rem">
+                            <div class="aui-col-xs-6" style="text-align: left"><span style="color: #E95F8F">预约/自动抢:</span></div>
+                            <div class="aui-col-xs-6" style="text-align: right"><span style="color: white;">{$item.needgourd}</span></div>
+                        </div>
+
+                        <div class="aui-row" style="font-size:0.58rem; margin-top:4px; padding-left: 0.3rem; padding-right: 0.1rem">
+                            <div class="aui-col-xs-4" style="text-align: left; width:56%;"><span style="color: #E95F8F;">领养收益:</span></div>
+                            <div class="aui-col-xs-8" style="text-align: right; width:44%;"><span style="color: white;">{$item.gains}%/{$item.grow_day}天</span></div>
+                        </div>
+
+<!--                        <div class="aui-row" style="font-size:0.58rem; margin-top:4px; padding-left: 0.4rem; padding-right: 0.4rem">-->
+<!--                            <div class="aui-col-xs-6" style="text-align: left; width:56%;"><span style="color: #E95F8F">可获取CBC:</span></div>-->
+<!--                            <div class="aui-col-xs-6" style="text-align: right;width:44%"><span style="color: white;">{$item.pgc}</span></div>-->
+<!--                        </div>-->
+
+                        <eq name="item['yuyue']" value="1">
+                          
+                            <if condition="(session('token') eq '3fb2c60b-cd5a-4c1f-8e66-9af2c6627810') OR (session('token') eq 'cd7b84b0-cae4-4f62-9664-63ec839457f9')">
+                              	<div class="aui-btn aui-btn-primary" style="background: #E95F8F; width:80%; margin-top:8px;margin-bottom:20px;" onclick="openDialog('callback','{$item.title}','{$item.price_one}','{$item.price_two}','{$item.id}')">请预约</div>
+                              <else />
+                              	<div class="aui-btn aui-btn-primary" style="background: #7b7b7b; width:80%; margin-top:8px;margin-bottom:20px;">已预约</div>
+                            </if>
+                        	
+                            
+                          	
+                          
+                         <else/>
+                            <div class="aui-btn aui-btn-primary" style="background: #E95F8F; width:80%; margin-top:8px;margin-bottom:20px;" onclick="openDialog('callback','{$item.title}','{$item.price_one}','{$item.price_two}','{$item.id}')">请预约</div>
+                        </eq>
+                    </div>
+                </div>
+            </foreach>
+
+
+        </div>
+    </div>
+    <script type="text/javascript" src="__PUBLIC__/app/script/aui-dialog.js" ></script>
+    <script type="text/javascript" src="__PUBLIC__/app/script/aui-toast.js" ></script>
+    <script type="text/javascript">
+        apiready = function(){
+            api.parseTapmode();
+        };
+
+        var toast = new auiToast();
+
+        if('{$suc_msg}')
+        {
+            toast.success({
+                title:decodeURI('{$suc_msg}'),
+                duration:2000
+            });
+        }
+
+        var dialog = new auiDialog({});
+        function openDialog(type,title,price_one,price_two,id){
+            switch (type) {
+                case "callback":
+                    dialog.alert({
+                        title:"确认预约："+title,
+                        msg:'价格为：'+price_one+'-'+price_two,
+                        buttons:['取消','确定']
+                    },function(ret){
+
+                        if(2 == ret.buttonIndex)
+                        {
+                            //向服务器发送请求，开始预约葫芦娃
+                            window.location.href = '/index.php/home/index/yhl?id='+id;
+                        }
+
+                    });
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
+    {:W('Tab/Index')}
+
+</body>
+</html>

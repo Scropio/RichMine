@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/app/css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/site/css/style.css">
+    <title>系统消息</title>
+    <style>
+        .news{background-color:transparent;}
+        .news li{background-color: rgb(115,115,115,0.5)!important;border: 0!important; margin: 4% auto!important;}
+        .news li:active{background-color: rgb(115,115,115,0.5)!important;border: 0!important;}
+        .info-tit{color: #fff!important;}
+        .info-tit p{color: #fff!important;}
+    </style>
+</head>
+{:W('Body/Index')}
+<div class="aui-content" style="overflow: scroll;height: 90%;" >
+    <ul class="aui-list aui-media-list news">
+        <foreach name="data['data']['data']" item="item">
+        <li class="aui-list-item">
+            <div class="aui-media-list-item-inner">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-text">
+                        <div class="aui-list-item-title info-tit">{$item.title}</div>
+                        <div class="aui-list-item-right info-tit">{$item.createtime}</div>
+                    </div>
+                    <div class="aui-list-item-text aui-ellipsis-2 info-tit">
+                        {$item.content}
+                    </div>
+                </div>
+            </div>
+        </li>
+        </foreach>
+    </ul>
+</div>
+{:W('Tab/Index')}
+</body>
+</html>

@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?><header class="aui-bar aui-bar-nav"><img src="/Public/site/images/header.png" style="margin: 0.8rem auto;  display: block; width:35%;"> </header>

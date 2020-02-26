@@ -1,0 +1,45 @@
+<!-- Sidebars -->
+<!-- Left Sidebar -->
+<!-- 页头 -->
+<header class="header navbar-fixed-top" role="navigation" data-toggle="mobileNav">
+    <!-- nav-Top -->
+    <div class="headTop">
+        <div class="container w-750 autoheight">
+            <!-- logo-->
+            <a href="javascript:history.back(-1)" class="logo fl"><img style="height: 70%;margin-top: 5px;" src="/static/web/mobile/images/fan.png" alt=""></a>
+            <!-- 快捷联系 -->
+            <div class="btn-menu fr" id="btn-menu"><img src="/static/web/mobile/images/btn-menu.png" alt="">+</div>
+        </div>
+    </div>
+</header>
+
+<div class="menu menu-hidden" id="menu">
+    <div class="mask"></div>
+    <div class="nav-main">
+        <div class="close-menu"><a href="javascript:void(0);" id="close-menu">X</a></div>
+        <ul>
+            <li class="active"><a href="{:url('index/index')}">主页</a></li>
+            {volist name="category" id="vo"}
+         
+                <li class="">
+                    
+                     {if condition="$vo['child'] eq 1"}
+                     <a  href="###">{$vo.catname}</a>
+                    <div>
+                        {volist name="$vo.sub" id="v"}
+                       <a style="line-height: 2rem;color: #ff7c01;" href="{:url('mobile/'.$vo['catdir'].'/index',['catId'=>$v['id']] )}">{$v.catname}</a>
+                        {/volist}
+                    </div> 
+                    {else /}
+                    <a href="{:url('mobile/'.$vo['catdir'].'/index',['catId'=>$vo['id']] )}">{$vo.catname}</a>
+                   {/if} 
+                </li>
+         
+            {/volist}    
+        </ul>
+        <div class="text-center p-10">
+            <p>关注我们</p>
+            <img src="/static/web/mobile/images/5a0c156e0eb98.jpg" alt="">
+        </div>
+    </div>
+</div>
